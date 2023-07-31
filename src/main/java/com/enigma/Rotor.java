@@ -1,40 +1,50 @@
 package com.enigma;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Rotor {
-    private List<String> dictionary;
-    private int currentIndex;
-    private String changeWord;
+    private List<Character> etw;
+    private List<Character> alphabetRing;
+    private List<Character> rotorRing;
+    private char turnOverChar;
 
-    public Rotor() {
-        dictionary = new ArrayList<>();
-        currentIndex = 0;
-        changeWord = "W";
-
-        for (char ch = 'A'; ch <= 'Z'; ch++) {
-            this.dictionary.add(String.valueOf(ch));
-        }
-
+    public Rotor(List<Character> rotorRing, char turnOverChar) {
+        this.etw = new ArrayList<>(Arrays.asList('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'));
+        this.alphabetRing = new ArrayList<>(Arrays.asList('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'));
+        this.rotorRing = rotorRing;
+        this.turnOverChar = turnOverChar;
     }
+
     public boolean rotateRotor() {
-        if (this.currentIndex != dictionary.size()-1) {
-            this.currentIndex++;
+        // Advance next rotor boolean
+        boolean rotateNext = this.alphabetRing.get(0) == this.turnOverChar;
+        // Rotate the alphabet ring
+        char tempAlphabet = this.alphabetRing.get(0);
+        this.alphabetRing.remove(0);
+        this.alphabetRing.add(tempAlphabet);
+        // Rotate the rotor ring
+        char tempRotor = this.rotorRing.get(0);
+        this.rotorRing.remove(0);
+        this.rotorRing.add(tempRotor);
 
-        }
-        else {
-            this.currentIndex = 0;
-        }
-
-        return dictionary.get(currentIndex) == changeWord;
+        return rotateNext;
     }
 
-    public void setCurrentIndex(int currentIndex) {
-        this.currentIndex = currentIndex;
+    public char processIn(char input) {
+        int indexInput = this.etw.indexOf(input);
+        char match = this.rotorRing.get(indexInput);
+        int matchIndex = this.alphabetRing.indexOf(match);
+
+        return this.etw.get(matchIndex);
     }
 
-    public void setChangeWord(String changeWord) {
-        this.changeWord = changeWord;
+    public char processOut(char input) {
+        int indexInput = this.etw.indexOf(input);
+        char match = this.alphabetRing.get(indexInput);
+        int matchIndex = this.rotorRing.indexOf(match);
+
+        return this.etw.get(matchIndex);
     }
 }
