@@ -17,19 +17,35 @@ public class Rotor {
         this.turnOverChar = turnOverChar;
     }
 
-    public boolean rotateRotor() {
-        // Advance next rotor boolean
-        boolean rotateNext = this.alphabetRing.get(0) == this.turnOverChar;
-        // Rotate the alphabet ring
+    public void rotateToPreviousAlphabet() {
+        // Rotate to the previous alphabet ring
+        char tempAlphabet = this.alphabetRing.get(25);
+        this.alphabetRing.remove(25);
+        this.alphabetRing.add(0, tempAlphabet);
+        // Rotate the previous rotor ring
+        char tempRotor = this.rotorRing.get(25);
+        this.rotorRing.remove(25);
+        this.rotorRing.add(0, tempRotor);
+    }
+
+    public void rotateToNextAlphabet() {
+        // Rotate to the next alphabet ring
         char tempAlphabet = this.alphabetRing.get(0);
         this.alphabetRing.remove(0);
         this.alphabetRing.add(tempAlphabet);
-        // Rotate the rotor ring
+        // Rotate the next rotor ring
         char tempRotor = this.rotorRing.get(0);
         this.rotorRing.remove(0);
         this.rotorRing.add(tempRotor);
+    }
 
-        return rotateNext;
+    public boolean rotateRotor() {
+        // Advance next rotor boolean
+        boolean rotateNextRotor = this.alphabetRing.get(0) == this.turnOverChar;
+        // Rotate the rotor
+        rotateToNextAlphabet();
+
+        return rotateNextRotor;
     }
 
     public char processIn(char input) {
@@ -46,5 +62,15 @@ public class Rotor {
         int matchIndex = this.rotorRing.indexOf(match);
 
         return this.etw.get(matchIndex);
+    }
+
+    public char getFirstAlphabet() {
+        return this.alphabetRing.get(0);
+    }
+
+    public void setInitialPosition(char initialChar) {
+        while (this.alphabetRing.get(0) != initialChar) {
+            this.rotateToNextAlphabet();
+        }
     }
 }

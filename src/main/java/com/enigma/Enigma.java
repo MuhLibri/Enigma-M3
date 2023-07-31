@@ -22,7 +22,7 @@ public class Enigma {
 
         this.rotor1 = new Rotor(rotorRing1, 'Q');
         this.rotor2 = new Rotor(rotorRing2,'E');
-        this.rotor3 = new Rotor(rotorRing3, 'v');
+        this.rotor3 = new Rotor(rotorRing3, 'V');
 
         this.leftRotor = this.rotor1;
         this.middleRotor = this.rotor2;
@@ -35,8 +35,10 @@ public class Enigma {
 
     }
 
-    public char encrypt(char input) {
+    public char encryptOneChar(char input) {
+//        System.out.println(rightRotor.getFirstAlphabet());
         boolean rotateMiddle = this.rightRotor.rotateRotor();
+//        System.out.println(rotateMiddle);
 
         if (rotateMiddle) {
             boolean rotateLeft = this.middleRotor.rotateRotor();
@@ -56,8 +58,45 @@ public class Enigma {
         return input;
     }
 
-    public String decrypt() {
-        return "a";
+    public String encrypt(String input) {
+        char[] inputList = input.toCharArray();
+        char[] outputList = new char[inputList.length];
+        char tempChar;
+
+        for (int i = 0; i < inputList.length; i++) {
+            tempChar = inputList[i];
+            if (Character.isLetter(tempChar)) {
+                tempChar = Character.toUpperCase(tempChar);
+                tempChar = this.encryptOneChar(tempChar);
+            }
+            outputList[i] = tempChar;
+        }
+
+        return new String(outputList);
+    }
+
+    public Rotor getRotor1() {
+        return rotor1;
+    }
+
+    public Rotor getRotor2() {
+        return rotor2;
+    }
+
+    public Rotor getRotor3() {
+        return rotor3;
+    }
+
+    public Rotor getLeftRotor() {
+        return leftRotor;
+    }
+
+    public Rotor getMiddleRotor() {
+        return middleRotor;
+    }
+
+    public Rotor getRightRotor() {
+        return rightRotor;
     }
 
     public void setLeftRotor(Rotor leftRotor) {
