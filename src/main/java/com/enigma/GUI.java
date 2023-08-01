@@ -257,9 +257,11 @@ public class GUI extends JFrame implements ActionListener {
         else if (e.getSource() == showProcessButton) {
             if (stepsPanel.isVisible()) {
                 stepsPanel.setVisible(false);
+                showProcessButton.setLabel("Show Process");
             }
             else {
                 stepsPanel.setVisible(true);
+                showProcessButton.setLabel("Hide Process");
             }
         }
         else if (e.getSource() == settingButton) {
