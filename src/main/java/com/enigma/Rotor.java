@@ -5,16 +5,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Rotor {
+    private String name;
     private List<Character> etw;
     private List<Character> alphabetRing;
     private List<Character> rotorRing;
     private char turnOverChar;
 
-    public Rotor(List<Character> rotorRing, char turnOverChar) {
+    public Rotor(String name, List<Character> rotorRing, char turnOverChar) {
+        this.name = name;
         this.etw = new ArrayList<>(Arrays.asList('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'));
         this.alphabetRing = new ArrayList<>(Arrays.asList('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'));
         this.rotorRing = rotorRing;
         this.turnOverChar = turnOverChar;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void rotateToPreviousAlphabet() {

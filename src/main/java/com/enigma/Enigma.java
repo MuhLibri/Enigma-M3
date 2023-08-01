@@ -5,9 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Enigma {
-    private Rotor rotor1;
-    private Rotor rotor2;
-    private Rotor rotor3;
     private Rotor leftRotor;
     private Rotor middleRotor;
     private Rotor rightRotor;
@@ -20,71 +17,61 @@ public class Enigma {
         List<Character> rotorRing2 = new ArrayList<>(Arrays.asList('A','J','D','K','S','I','R','U','X','B','L','H','W','T','M','C','Q','G','Z','N','P','Y','F','V','O','E'));
         List<Character> rotorRing3 = new ArrayList<>(Arrays.asList('B','D','F','H','J','L','C','P','R','T','X','V','Z','N','Y','E','I','W','G','A','K','M','U','S','Q','O'));
 
-        this.rotor1 = new Rotor(rotorRing1, 'Q');
-        this.rotor2 = new Rotor(rotorRing2,'E');
-        this.rotor3 = new Rotor(rotorRing3, 'V');
-
-        this.leftRotor = this.rotor1;
-        this.middleRotor = this.rotor2;
-        this.rightRotor = this.rotor3;
+        this.leftRotor = new Rotor("Rotor I", rotorRing1, 'Q');
+        this.middleRotor = new Rotor("Rotor II", rotorRing2,'E');
+        this.rightRotor = new Rotor("Rotor III", rotorRing3, 'V');
 
         this.reflector = new Reflector();
+
+        this.steps = "";
     }
 
-    public void resetConfig() {
+    public char encrypt(char input) {
+        StringBuilder tempSteps = new StringBuilder("Input: " + input + "\n");
 
-    }
-
-    public char encryptOneChar(char input) {
-//        System.out.println(rightRotor.getFirstAlphabet());
         boolean rotateMiddle = this.rightRotor.rotateRotor();
-//        System.out.println(rotateMiddle);
-
         if (rotateMiddle) {
             boolean rotateLeft = this.middleRotor.rotateRotor();
             if (rotateLeft) {
                 this.leftRotor.rotateRotor();
             }
         }
+        tempSteps.append("Rotors Position: " + getLeftRotor().getFirstAlphabet() + getMiddleRotor().getFirstAlphabet() + getRightRotor().getFirstAlphabet() + "\n");
 
         input = this.rightRotor.processIn(input);
+        tempSteps.append("Right Rotor: " + input + "\n");
         input = this.middleRotor.processIn(input);
+        tempSteps.append("Middle Rotor: " + input + "\n");
         input = this.leftRotor.processIn(input);
+        tempSteps.append("Left Rotor: " + input + "\n");
         input = reflector.reflect(input);
+        tempSteps.append("Reflector: " + input + "\n");
         input = this.leftRotor.processOut(input);
+        tempSteps.append("Left Rotor: " + input + "\n");
         input = this.middleRotor.processOut(input);
+        tempSteps.append("Middle Rotor: " + input + "\n");
         input = this.rightRotor.processOut(input);
+        tempSteps.append("Right Rotor: " + input + "\n");
+        tempSteps.append("Output (Lampboard): " + input + "\n");
+        tempSteps.append("------------------------------------------------------------------\n");
+        steps = steps + tempSteps;
 
         return input;
     }
 
-    public String encrypt(String input) {
-        char[] inputList = input.toCharArray();
-        char[] outputList = new char[inputList.length];
-        char tempChar;
-
-        for (int i = 0; i < inputList.length; i++) {
-            tempChar = inputList[i];
-            if (Character.isLetter(tempChar)) {
-                tempChar = Character.toUpperCase(tempChar);
-                tempChar = this.encryptOneChar(tempChar);
-            }
-            outputList[i] = tempChar;
-        }
-
-        return new String(outputList);
-    }
-
     public Rotor getRotor1() {
-        return rotor1;
+        List<Character> rotorRing1 = new ArrayList<>(Arrays.asList('E','K','M','F','L','G','D','Q','V','Z','N','T','O','W','Y','H','X','U','S','P','A','I','B','R','C','J'));
+        return new Rotor("Rotor I", rotorRing1, 'Q');
     }
 
     public Rotor getRotor2() {
-        return rotor2;
+        List<Character> rotorRing2 = new ArrayList<>(Arrays.asList('A','J','D','K','S','I','R','U','X','B','L','H','W','T','M','C','Q','G','Z','N','P','Y','F','V','O','E'));
+        return new Rotor("Rotor II", rotorRing2,'E');
     }
 
     public Rotor getRotor3() {
-        return rotor3;
+        List<Character> rotorRing3 = new ArrayList<>(Arrays.asList('B','D','F','H','J','L','C','P','R','T','X','V','Z','N','Y','E','I','W','G','A','K','M','U','S','Q','O'));
+        return new Rotor("Rotor III", rotorRing3, 'V');
     }
 
     public Rotor getLeftRotor() {
@@ -113,5 +100,9 @@ public class Enigma {
 
     public String getSteps() {
         return steps;
+    }
+
+    public void clearSteps() {
+        this.steps = "";
     }
 }
