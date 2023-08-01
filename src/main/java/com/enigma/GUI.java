@@ -277,6 +277,19 @@ public class GUI extends JFrame implements ActionListener {
             settingDialog.pack();
             settingDialog.setVisible(true);
         }
+        else if (e.getSource() == plugboardButton) {
+            ImageIcon icon = new ImageIcon("assets/enigma.jpg");
+            JDialog plugboardDialog = new JDialog();
+            plugboardDialog.setIconImage(icon.getImage());
+            plugboardDialog.setTitle("Plugboard");
+            plugboardDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+            PlugboardPanel plugboardPanel = new PlugboardPanel(this.enigma);
+
+            plugboardDialog.setContentPane(plugboardPanel);
+            plugboardDialog.pack();
+            plugboardDialog.setVisible(true);
+        }
         else if (e.getSource() == this.keyboardPanel.buttonA) {
             processCharInput('A');
         }

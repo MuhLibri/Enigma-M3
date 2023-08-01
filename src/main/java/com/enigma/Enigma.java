@@ -20,14 +20,15 @@ public class Enigma {
         this.leftRotor = new Rotor("Rotor I", rotorRing1, 'Q');
         this.middleRotor = new Rotor("Rotor II", rotorRing2,'E');
         this.rightRotor = new Rotor("Rotor III", rotorRing3, 'V');
-
         this.reflector = new Reflector();
-
+        this.plugboard = new Plugboard();
         this.steps = "";
     }
 
     public char encrypt(char input) {
         StringBuilder tempSteps = new StringBuilder("Input: " + input + "\n");
+        input = plugboard.processIn(input);
+        tempSteps.append("Plugboard: " + input + "\n");
 
         boolean rotateMiddle = this.rightRotor.rotateRotor();
         if (rotateMiddle) {
@@ -52,6 +53,8 @@ public class Enigma {
         tempSteps.append("Middle Rotor: " + input + "\n");
         input = this.rightRotor.processOut(input);
         tempSteps.append("Right Rotor: " + input + "\n");
+        input = plugboard.processOut(input);
+        tempSteps.append("Plugboard: " + input + "\n");
         tempSteps.append("Output (Lampboard): " + input + "\n");
         tempSteps.append("------------------------------------------------------------------\n");
         steps = steps + tempSteps;

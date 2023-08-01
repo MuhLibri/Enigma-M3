@@ -33,60 +33,35 @@ public class KeyboardPanel extends JPanel {
     RoundJButton buttonX;
     RoundJButton buttonY;
     RoundJButton buttonZ;
+
     public KeyboardPanel() {
         // Buttons
         buttonA = new RoundJButton("A");
-//        buttonA.addActionListener(this);
         buttonB = new RoundJButton("B");
-//        buttonB.addActionListener(this);
         buttonC = new RoundJButton("C");
-//        buttonC.addActionListener(this);
         buttonD = new RoundJButton("D");
-//        buttonD.addActionListener(this);
         buttonE = new RoundJButton("E");
-//        buttonE.addActionListener(this);
         buttonF = new RoundJButton("F");
-//        buttonF.addActionListener(this);
         buttonG = new RoundJButton("G");
-//        buttonG.addActionListener(this);
         buttonH = new RoundJButton("H");
-//        buttonH.addActionListener(this);
         buttonI = new RoundJButton("I");
-//        buttonI.addActionListener(this);
         buttonJ = new RoundJButton("J");
-//        buttonJ.addActionListener(this);
         buttonK = new RoundJButton("K");
-//        buttonK.addActionListener(this);
         buttonL = new RoundJButton("L");
-//        buttonL.addActionListener(this);
         buttonM = new RoundJButton("M");
-//        buttonM.addActionListener(this);
         buttonN = new RoundJButton("N");
-//        buttonN.addActionListener(this);
         buttonO = new RoundJButton("O");
-//        buttonO.addActionListener(this);
         buttonP = new RoundJButton("P");
-//        buttonP.addActionListener(this);
         buttonQ = new RoundJButton("Q");
-//        buttonQ.addActionListener(this);
         buttonR = new RoundJButton("R");
-//        buttonR.addActionListener(this);
         buttonS = new RoundJButton("S");
-//        buttonS.addActionListener(this);
         buttonT = new RoundJButton("T");
-//        buttonT.addActionListener(this);
         buttonU = new RoundJButton("U");
-//        buttonU.addActionListener(this);
         buttonV = new RoundJButton("V");
-//        buttonV.addActionListener(this);
         buttonW = new RoundJButton("W");
-//        buttonW.addActionListener(this);
         buttonX = new RoundJButton("X");
-//        buttonX.addActionListener(this);
         buttonY = new RoundJButton("Y");
-//        buttonY.addActionListener(this);
         buttonZ = new RoundJButton("Z");
-//        buttonZ.addActionListener(this);
         // Panel
         // 1st Row
         JPanel keyboardPanel1 = new JPanel();
@@ -137,11 +112,6 @@ public class KeyboardPanel extends JPanel {
         this.add(keyboardPanel2);
         this.add(keyboardPanel3);
     }
-
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//
-//    }
 }
 
 
