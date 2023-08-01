@@ -27,8 +27,6 @@ public class Enigma {
 
     public char encrypt(char input) {
         StringBuilder tempSteps = new StringBuilder("Input: " + input + "\n");
-        input = plugboard.processIn(input);
-        tempSteps.append("Plugboard: " + input + "\n");
 
         boolean rotateMiddle = this.rightRotor.rotateRotor();
         if (rotateMiddle) {
@@ -39,6 +37,8 @@ public class Enigma {
         }
         tempSteps.append("Rotors Position: " + getLeftRotor().getFirstAlphabet() + getMiddleRotor().getFirstAlphabet() + getRightRotor().getFirstAlphabet() + "\n");
 
+        input = plugboard.processIn(input);
+        tempSteps.append("Plugboard: " + input + "\n");
         input = this.rightRotor.processIn(input);
         tempSteps.append("Right Rotor: " + input + "\n");
         input = this.middleRotor.processIn(input);
@@ -99,6 +99,10 @@ public class Enigma {
 
     public void setRightRotor(Rotor rightRotor) {
         this.rightRotor = rightRotor;
+    }
+
+    public Plugboard getPlugboard() {
+        return plugboard;
     }
 
     public String getSteps() {

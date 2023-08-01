@@ -340,6 +340,7 @@ class RoundJTextField extends JTextField {
 
     @Override
     protected void paintComponent(Graphics g) {
+        g.setFont(new Font("Dialog", 1, 15));
         if (!isOpaque() && getBorder() instanceof Border) {
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
