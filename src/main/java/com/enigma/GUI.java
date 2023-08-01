@@ -1,7 +1,6 @@
 package com.enigma;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,22 +9,19 @@ import java.awt.event.ActionListener;
 
 public class GUI extends JFrame implements ActionListener {
     Enigma enigma;
-    JTextField leftRotor;
-    JTextField middleRotor;
-    JTextField rightRotor;
+    RotorPanel rotorPanel;
+    LampboardPanel lampboardPanel;
+    KeyboardPanel keyboardPanel;
     Button resetButton;
     Button settingButton;
     Button plugboardButton;
     JPanel encryptionTextSection;
-    JPanel plainPanel;
-    JPanel encryptedPanel;
-    JTextArea plainText;
-    JTextArea encryptedText;
+    JPanel inputPanel;
+    JPanel outputPanel;
+    JTextArea inputText;
+    JTextArea outputText;
     Button showProcessButton;
     Button clearButton;
-    LampboardPanel lampboardPanel;
-    KeyboardPanel keyboardPanel;
-
 
     public GUI() {
         // Enigma
@@ -39,37 +35,7 @@ public class GUI extends JFrame implements ActionListener {
 
 
         // Rotor Section
-        // Left Rotor
-        leftRotor = new JTextField("A");
-        leftRotor.setHorizontalAlignment(SwingConstants.CENTER);
-        leftRotor.setEditable(false);
-        leftRotor.setBackground(Color.LIGHT_GRAY);
-        leftRotor.setBorder(new LineBorder(Color.BLACK));
-        // Middle Rotor
-        middleRotor = new JTextField("A");
-        middleRotor.setHorizontalAlignment(SwingConstants.CENTER);
-        middleRotor.setEditable(false);
-        middleRotor.setBackground(Color.LIGHT_GRAY);
-        middleRotor.setBorder(new LineBorder(Color.BLACK));
-        // Right Rotor
-        rightRotor = new JTextField("A");
-        rightRotor.setHorizontalAlignment(SwingConstants.CENTER);
-        rightRotor.setEditable(false);
-        rightRotor.setBackground(Color.LIGHT_GRAY);
-        rightRotor.setBorder(new LineBorder(Color.BLACK));
-        // Rotor Panel
-        JPanel rotorPanel = new JPanel();
-        rotorPanel.setLayout(new GridLayout());
-        rotorPanel.setPreferredSize(new Dimension(200,80));
-        rotorPanel.setBackground(Color.BLACK);
-        rotorPanel.add(leftRotor);
-        rotorPanel.add(middleRotor);
-        rotorPanel.add(rightRotor);
-        JPanel upperPanel = new JPanel();
-        upperPanel.setBackground(new Color(31, 31, 33));
-        upperPanel.setPreferredSize(new Dimension(750, 150));
-        upperPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 1000, 30));
-        upperPanel.add(rotorPanel);
+        rotorPanel = new RotorPanel();
 
 
         // Lampboard Section
@@ -111,7 +77,7 @@ public class GUI extends JFrame implements ActionListener {
         enigmaPanel.setOpaque(false);
         enigmaPanel.setPreferredSize(new Dimension(800, 765));
         enigmaPanel.setLayout(new BorderLayout());
-        enigmaPanel.add(upperPanel, BorderLayout.NORTH);
+        enigmaPanel.add(rotorPanel, BorderLayout.NORTH);
         enigmaPanel.add(lampboardPanel, BorderLayout.CENTER);
         enigmaPanel.add(keyboardPanel, BorderLayout.SOUTH);
 
@@ -125,55 +91,55 @@ public class GUI extends JFrame implements ActionListener {
 
 
         // Text Section
-        // Plain Text
+        // Input Text
         // Label
-        JLabel plainLabel = new JLabel("Input");
-        plainLabel.setForeground(Color.WHITE);
-        plainLabel.setBorder(BorderFactory.createEmptyBorder(0,0,7,0));
-        plainLabel.setFont(label2Font);
+        JLabel inputLabel = new JLabel("Input");
+        inputLabel.setForeground(Color.WHITE);
+        inputLabel.setBorder(BorderFactory.createEmptyBorder(0,0,7,0));
+        inputLabel.setFont(label2Font);
         // Text Area
-        plainText = new JTextArea();
-        plainText.setEditable(false);
-        plainText.setMargin(new Insets(7, 7, 7, 7));
-        plainText.setLineWrap(true);
-        plainText.setWrapStyleWord(true);
-        JScrollPane scrollPlain = new JScrollPane(plainText);
-        scrollPlain.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPlain.setPreferredSize(new Dimension(300, 120));
+        inputText = new JTextArea();
+        inputText.setEditable(false);
+        inputText.setMargin(new Insets(7, 7, 7, 7));
+        inputText.setLineWrap(true);
+        inputText.setWrapStyleWord(true);
+        JScrollPane scrollInput = new JScrollPane(inputText);
+        scrollInput.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollInput.setPreferredSize(new Dimension(300, 120));
         // Panel
-        plainPanel = new JPanel();
-        plainPanel.setOpaque(false);
-        plainPanel.setLayout(new BorderLayout());
-        plainPanel.add(plainLabel, BorderLayout.NORTH);
-        plainPanel.add(scrollPlain, BorderLayout.CENTER);
-        // Encrypted Text
+        inputPanel = new JPanel();
+        inputPanel.setOpaque(false);
+        inputPanel.setLayout(new BorderLayout());
+        inputPanel.add(inputLabel, BorderLayout.NORTH);
+        inputPanel.add(scrollInput, BorderLayout.CENTER);
+        // Output Text
         // Label
-        JLabel encryptedLabel = new JLabel("Output");
-        encryptedLabel.setForeground(Color.WHITE);
-        encryptedLabel.setBorder(BorderFactory.createEmptyBorder(0,0,7,0));
-        encryptedLabel.setFont(label2Font);
+        JLabel outputLabel = new JLabel("Output");
+        outputLabel.setForeground(Color.WHITE);
+        outputLabel.setBorder(BorderFactory.createEmptyBorder(0,0,7,0));
+        outputLabel.setFont(label2Font);
         // Text Area
-        encryptedText = new JTextArea();
-        encryptedText.setEditable(false);
-        encryptedText.setMargin(new Insets(7, 7, 7, 7));
-        encryptedText.setLineWrap(true);
-        encryptedText.setWrapStyleWord(true);
-        JScrollPane scrollEncrypted = new JScrollPane(encryptedText);
+        outputText = new JTextArea();
+        outputText.setEditable(false);
+        outputText.setMargin(new Insets(7, 7, 7, 7));
+        outputText.setLineWrap(true);
+        outputText.setWrapStyleWord(true);
+        JScrollPane scrollEncrypted = new JScrollPane(outputText);
         scrollEncrypted.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollEncrypted.setPreferredSize(new Dimension(300, 120));
         // Panel
-        encryptedPanel = new JPanel();
-        encryptedPanel.setOpaque(false);
-        encryptedPanel.setLayout(new BorderLayout());
-        encryptedPanel.add(encryptedLabel, BorderLayout.NORTH);
-        encryptedPanel.add(scrollEncrypted, BorderLayout.CENTER);
-        // Encrypted and Plain Text Panel
+        outputPanel = new JPanel();
+        outputPanel.setOpaque(false);
+        outputPanel.setLayout(new BorderLayout());
+        outputPanel.add(outputLabel, BorderLayout.NORTH);
+        outputPanel.add(scrollEncrypted, BorderLayout.CENTER);
+        // Input and Output Text Panel
         encryptionTextSection = new JPanel();
         encryptionTextSection.setOpaque(false);
         encryptionTextSection.setPreferredSize(new Dimension(320, 350));
         encryptionTextSection.setLayout(new FlowLayout(FlowLayout.CENTER, 1000, 20));
-        encryptionTextSection.add(plainPanel);
-        encryptionTextSection.add(encryptedPanel);
+        encryptionTextSection.add(inputPanel);
+        encryptionTextSection.add(outputPanel);
         // Clear Button
         clearButton = new Button("Clear");
         clearButton.setFocusable(false);
@@ -263,15 +229,15 @@ public class GUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == clearButton) {
-            plainText.setText("");
-            encryptedText.setText("");
+            inputText.setText("");
+            outputText.setText("");
         }
         else if (e.getSource() == showProcessButton) {
             // TO DO IMPLEMENT
         }
         else if (e.getSource() == resetButton) {
-            plainText.setText("");
-            encryptedText.setText("");
+            inputText.setText("");
+            outputText.setText("");
         }
         else if (e.getSource() == settingButton) {
             // TO DO IMPLEMENT
@@ -358,21 +324,21 @@ public class GUI extends JFrame implements ActionListener {
 
     private void processCharInput(char input) {
         // Write input
-        String currentText = plainText.getText();
+        String currentText = inputText.getText();
         currentText = currentText + input;
-        plainText.setText(currentText);
+        inputText.setText(currentText);
 
         // Search output
         char output = enigma.encryptOneChar(input);
         // Write output
-        String outputText = encryptedText.getText();
+        String outputText = this.outputText.getText();
         outputText = outputText + output;
-        encryptedText.setText(outputText);
+        this.outputText.setText(outputText);
 
         // Set the rotors
-        rightRotor.setText(Character.toString(this.enigma.getRightRotor().getFirstAlphabet()));
-        middleRotor.setText(Character.toString(this.enigma.getMiddleRotor().getFirstAlphabet()));
-        leftRotor.setText(Character.toString(this.enigma.getLeftRotor().getFirstAlphabet()));
+        rotorPanel.rightRotor.setText(Character.toString(this.enigma.getRightRotor().getFirstAlphabet()));
+        rotorPanel.middleRotor.setText(Character.toString(this.enigma.getMiddleRotor().getFirstAlphabet()));
+        rotorPanel.leftRotor.setText(Character.toString(this.enigma.getLeftRotor().getFirstAlphabet()));
 
         // Turn on the lamp
         lampboardPanel.turnOnLamp(output);
