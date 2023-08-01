@@ -261,7 +261,6 @@ public class GUI extends JFrame implements ActionListener {
             else {
                 stepsPanel.setVisible(true);
             }
-            stepsText.setText(enigma.getSteps());
         }
         else if (e.getSource() == settingButton) {
             ImageIcon icon = new ImageIcon("assets/setting.png");
@@ -374,5 +373,8 @@ public class GUI extends JFrame implements ActionListener {
 
         // Turn on the lamp
         lampboardPanel.turnOnLamp(output);
+
+        // Update the steps text
+        stepsText.setText(enigma.getSteps());
     }
 }
