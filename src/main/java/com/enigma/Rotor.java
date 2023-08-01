@@ -68,6 +68,14 @@ public class Rotor {
         return this.alphabetRing.get(0);
     }
 
+    public char getSecondAlphabet() {
+        return this.alphabetRing.get(1);
+    }
+
+    public char getLastAlphabet() {
+        return this.alphabetRing.get(25);
+    }
+
     public void setInitialPosition(char initialChar) {
         while (this.alphabetRing.get(0) != initialChar) {
             this.rotateToNextAlphabet();

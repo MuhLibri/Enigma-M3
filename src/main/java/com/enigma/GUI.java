@@ -36,6 +36,12 @@ public class GUI extends JFrame implements ActionListener {
 
         // Rotor Section
         rotorPanel = new RotorPanel();
+        rotorPanel.upRightButton.addActionListener(this);
+        rotorPanel.downRightButton.addActionListener(this);
+        rotorPanel.upMiddleButton.addActionListener(this);
+        rotorPanel.downMiddleButton.addActionListener(this);
+        rotorPanel.upLeftButton.addActionListener(this);
+        rotorPanel.downLeftButton.addActionListener(this);
 
 
         // Lampboard Section
@@ -242,6 +248,30 @@ public class GUI extends JFrame implements ActionListener {
         else if (e.getSource() == settingButton) {
             // TO DO IMPLEMENT
         }
+        else if (e.getSource() == rotorPanel.upRightButton) {
+            this.enigma.getRightRotor().rotateToNextAlphabet();
+            setRotor();
+        }
+        else if (e.getSource() == rotorPanel.downRightButton) {
+            this.enigma.getRightRotor().rotateToPreviousAlphabet();
+            setRotor();
+        }
+        else if (e.getSource() == rotorPanel.upMiddleButton) {
+            this.enigma.getMiddleRotor().rotateToNextAlphabet();
+            setRotor();
+        }
+        else if (e.getSource() == rotorPanel.downMiddleButton) {
+            this.enigma.getMiddleRotor().rotateToPreviousAlphabet();
+            setRotor();
+        }
+        else if (e.getSource() == rotorPanel.upLeftButton) {
+            this.enigma.getLeftRotor().rotateToNextAlphabet();
+            setRotor();
+        }
+        else if (e.getSource() == rotorPanel.downLeftButton) {
+            this.enigma.getLeftRotor().rotateToPreviousAlphabet();
+            setRotor();
+        }
         else if (e.getSource() == this.keyboardPanel.buttonA) {
             processCharInput('A');
         }
@@ -336,11 +366,24 @@ public class GUI extends JFrame implements ActionListener {
         this.outputText.setText(outputText);
 
         // Set the rotors
+        setRotor();
+
+        // Turn on the lamp
+        lampboardPanel.turnOnLamp(output);
+    }
+
+    private void setRotor() {
         rotorPanel.rightRotor.setText(Character.toString(this.enigma.getRightRotor().getFirstAlphabet()));
         rotorPanel.middleRotor.setText(Character.toString(this.enigma.getMiddleRotor().getFirstAlphabet()));
         rotorPanel.leftRotor.setText(Character.toString(this.enigma.getLeftRotor().getFirstAlphabet()));
 
-        // Turn on the lamp
-        lampboardPanel.turnOnLamp(output);
+        rotorPanel.upRightButton.setLabel(Character.toString(this.enigma.getRightRotor().getSecondAlphabet()));
+        rotorPanel.downRightButton.setLabel(Character.toString(this.enigma.getRightRotor().getLastAlphabet()));
+
+        rotorPanel.upMiddleButton.setLabel(Character.toString(this.enigma.getMiddleRotor().getSecondAlphabet()));
+        rotorPanel.downMiddleButton.setLabel(Character.toString(this.enigma.getMiddleRotor().getLastAlphabet()));
+
+        rotorPanel.upLeftButton.setLabel(Character.toString(this.enigma.getLeftRotor().getSecondAlphabet()));
+        rotorPanel.downLeftButton.setLabel(Character.toString(this.enigma.getLeftRotor().getLastAlphabet()));
     }
 }

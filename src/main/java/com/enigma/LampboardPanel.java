@@ -166,135 +166,136 @@ public class LampboardPanel extends JPanel {
     }
 
     public void turnOnLamp(char output) {
+        Color onColor = new Color(240, 94, 22);
         Thread thread = new Thread(() -> {
             try {
                 if (output == 'A') {
-                    lampA.setBackground(Color.ORANGE);
+                    lampA.setBackground(onColor);
                     Thread.sleep(1000);
                     lampA.setBackground(Color.BLACK);
                 }
                 else if (output == 'B') {
-                    lampB.setBackground(Color.ORANGE);
+                    lampB.setBackground(onColor);
                     Thread.sleep(1000);
                     lampB.setBackground(Color.BLACK);
                 }
                 else if (output == 'C') {
-                    lampC.setBackground(Color.ORANGE);
+                    lampC.setBackground(onColor);
                     Thread.sleep(1000);
                     lampC.setBackground(Color.BLACK);
                 }
                 else if (output == 'D') {
-                    lampD.setBackground(Color.ORANGE);
+                    lampD.setBackground(onColor);
                     Thread.sleep(1000);
                     lampD.setBackground(Color.BLACK);
                 }
                 else if (output == 'E') {
-                    lampE.setBackground(Color.ORANGE);
+                    lampE.setBackground(onColor);
                     Thread.sleep(1000);
                     lampE.setBackground(Color.BLACK);
                 }
                 else if (output == 'F') {
-                    lampF.setBackground(Color.ORANGE);
+                    lampF.setBackground(onColor);
                     Thread.sleep(1000);
                     lampF.setBackground(Color.BLACK);
                 }
                 else if (output == 'G') {
-                    lampG.setBackground(Color.ORANGE);
+                    lampG.setBackground(onColor);
                     Thread.sleep(1000);
                     lampG.setBackground(Color.BLACK);
                 }
                 else if (output == 'H') {
-                    lampH.setBackground(Color.ORANGE);
+                    lampH.setBackground(onColor);
                     Thread.sleep(1000);
                     lampH.setBackground(Color.BLACK);
                 }
                 else if (output == 'I') {
-                    lampI.setBackground(Color.ORANGE);
+                    lampI.setBackground(onColor);
                     Thread.sleep(1000);
                     lampI.setBackground(Color.BLACK);
                 }
                 else if (output == 'J') {
-                    lampJ.setBackground(Color.ORANGE);
+                    lampJ.setBackground(onColor);
                     Thread.sleep(1000);
                     lampJ.setBackground(Color.BLACK);
                 }
                 else if (output == 'K') {
-                    lampK.setBackground(Color.ORANGE);
+                    lampK.setBackground(onColor);
                     Thread.sleep(1000);
                     lampK.setBackground(Color.BLACK);
                 }
                 else if (output == 'L') {
-                    lampL.setBackground(Color.ORANGE);
+                    lampL.setBackground(onColor);
                     Thread.sleep(1000);
                     lampL.setBackground(Color.BLACK);
                 }
                 else if (output == 'M') {
-                    lampM.setBackground(Color.ORANGE);
+                    lampM.setBackground(onColor);
                     Thread.sleep(1000);
                     lampM.setBackground(Color.BLACK);
                 }
                 else if (output == 'N') {
-                    lampN.setBackground(Color.ORANGE);
+                    lampN.setBackground(onColor);
                     Thread.sleep(1000);
                     lampN.setBackground(Color.BLACK);
                 }
                 else if (output == 'O') {
-                    lampO.setBackground(Color.ORANGE);
+                    lampO.setBackground(onColor);
                     Thread.sleep(1000);
                     lampO.setBackground(Color.BLACK);
                 }
                 else if (output == 'P') {
-                    lampP.setBackground(Color.ORANGE);
+                    lampP.setBackground(onColor);
                     Thread.sleep(1000);
                     lampP.setBackground(Color.BLACK);
                 }
                 else if (output == 'Q') {
-                    lampQ.setBackground(Color.ORANGE);
+                    lampQ.setBackground(onColor);
                     Thread.sleep(1000);
                     lampQ.setBackground(Color.BLACK);
                 }
                 else if (output == 'R') {
-                    lampR.setBackground(Color.ORANGE);
+                    lampR.setBackground(onColor);
                     Thread.sleep(1000);
                     lampR.setBackground(Color.BLACK);
                 }
                 else if (output == 'S') {
-                    lampS.setBackground(Color.ORANGE);
+                    lampS.setBackground(onColor);
                     Thread.sleep(1000);
                     lampS.setBackground(Color.BLACK);
                 }
                 else if (output == 'T') {
-                    lampT.setBackground(Color.ORANGE);
+                    lampT.setBackground(onColor);
                     Thread.sleep(1000);
                     lampT.setBackground(Color.BLACK);
                 }
                 else if (output == 'U') {
-                    lampU.setBackground(Color.ORANGE);
+                    lampU.setBackground(onColor);
                     Thread.sleep(1000);
                     lampU.setBackground(Color.BLACK);
                 }
                 else if (output == 'V') {
-                    lampV.setBackground(Color.ORANGE);
+                    lampV.setBackground(onColor);
                     Thread.sleep(1000);
                     lampV.setBackground(Color.BLACK);
                 }
                 else if (output == 'W') {
-                    lampW.setBackground(Color.ORANGE);
+                    lampW.setBackground(onColor);
                     Thread.sleep(1000);
                     lampW.setBackground(Color.BLACK);
                 }
                 else if (output == 'X') {
-                    lampX.setBackground(Color.ORANGE);
+                    lampX.setBackground(onColor);
                     Thread.sleep(1000);
                     lampX.setBackground(Color.BLACK);
                 }
                 else if (output == 'Y') {
-                    lampY.setBackground(Color.ORANGE);
+                    lampY.setBackground(onColor);
                     Thread.sleep(1000);
                     lampY.setBackground(Color.BLACK);
                 }
                 else if (output == 'Z') {
-                    lampZ.setBackground(Color.ORANGE);
+                    lampZ.setBackground(onColor);
                     Thread.sleep(1000);
                     lampZ.setBackground(Color.BLACK);
                 }
