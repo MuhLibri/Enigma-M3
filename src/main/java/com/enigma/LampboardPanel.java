@@ -5,113 +5,111 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 public class LampboardPanel extends JPanel {
-    // Lamps
-    RoundJTextField lampA;
-    RoundJTextField lampB;
-    RoundJTextField lampC;
-    RoundJTextField lampD;
-    RoundJTextField lampE;
-    RoundJTextField lampF;
-    RoundJTextField lampG;
-    RoundJTextField lampH;
-    RoundJTextField lampI;
-    RoundJTextField lampJ;
-    RoundJTextField lampK;
-    RoundJTextField lampL;
-    RoundJTextField lampM;
-    RoundJTextField lampN;
-    RoundJTextField lampO;
-    RoundJTextField lampP;
-    RoundJTextField lampQ;
-    RoundJTextField lampR;
-    RoundJTextField lampS;
-    RoundJTextField lampT;
-    RoundJTextField lampU;
-    RoundJTextField lampV;
-    RoundJTextField lampW;
-    RoundJTextField lampX;
-    RoundJTextField lampY;
-    RoundJTextField lampZ;
+    Lamp lampA;
+    Lamp lampB;
+    Lamp lampC;
+    Lamp lampD;
+    Lamp lampE;
+    Lamp lampF;
+    Lamp lampG;
+    Lamp lampH;
+    Lamp lampI;
+    Lamp lampJ;
+    Lamp lampK;
+    Lamp lampL;
+    Lamp lampM;
+    Lamp lampN;
+    Lamp lampO;
+    Lamp lampP;
+    Lamp lampQ;
+    Lamp lampR;
+    Lamp lampS;
+    Lamp lampT;
+    Lamp lampU;
+    Lamp lampV;
+    Lamp lampW;
+    Lamp lampX;
+    Lamp lampY;
+    Lamp lampZ;
 
     public LampboardPanel() {
-        // Lampboard Section
         // Lamps
-        lampA = new RoundJTextField(10);
+        lampA = new Lamp(10);
         lampA.setText("A");
         lampA.setEditable(false);
-        lampB = new RoundJTextField(10);
+        lampB = new Lamp(10);
         lampB.setText("B");
         lampB.setEditable(false);
-        lampC = new RoundJTextField(10);
+        lampC = new Lamp(10);
         lampC.setText("C");
         lampC.setEditable(false);
-        lampD = new RoundJTextField(10);
+        lampD = new Lamp(10);
         lampD.setText("D");
         lampD.setEditable(false);
-        lampE = new RoundJTextField(10);
+        lampE = new Lamp(10);
         lampE.setText("E");
         lampE.setEditable(false);
-        lampF = new RoundJTextField(10);
+        lampF = new Lamp(10);
         lampF.setText("F");
         lampF.setEditable(false);
-        lampG = new RoundJTextField(10);
+        lampG = new Lamp(10);
         lampG.setText("G");
         lampG.setEditable(false);
-        lampH = new RoundJTextField(10);
+        lampH = new Lamp(10);
         lampH.setText("H");
         lampH.setEditable(false);
-        lampI = new RoundJTextField(10);
+        lampI = new Lamp(10);
         lampI.setText("I");
         lampI.setEditable(false);
-        lampJ = new RoundJTextField(10);
+        lampJ = new Lamp(10);
         lampJ.setText("J");
         lampJ.setEditable(false);
-        lampK = new RoundJTextField(10);
+        lampK = new Lamp(10);
         lampK.setText("K");
         lampK.setEditable(false);
-        lampL = new RoundJTextField(10);
+        lampL = new Lamp(10);
         lampL.setText("L");
         lampL.setEditable(false);
-        lampM = new RoundJTextField(10);
+        lampM = new Lamp(10);
         lampM.setText("M");
         lampM.setEditable(false);
-        lampN = new RoundJTextField(10);
+        lampN = new Lamp(10);
         lampN.setText("N");
         lampN.setEditable(false);
-        lampO = new RoundJTextField(10);
+        lampO = new Lamp(10);
         lampO.setText("O");
         lampO.setEditable(false);
-        lampP = new RoundJTextField(10);
+        lampP = new Lamp(10);
         lampP.setText("P");
         lampP.setEditable(false);
-        lampQ = new RoundJTextField(10);
+        lampQ = new Lamp(10);
         lampQ.setText("Q");
         lampQ.setEditable(false);
-        lampR = new RoundJTextField(10);
+        lampR = new Lamp(10);
         lampR.setText("R");
         lampR.setEditable(false);
-        lampS = new RoundJTextField(10);
+        lampS = new Lamp(10);
         lampS.setText("S");
         lampS.setEditable(false);
-        lampT = new RoundJTextField(10);
+        lampT = new Lamp(10);
         lampT.setText("T");
         lampT.setEditable(false);
-        lampU = new RoundJTextField(10);
+        lampU = new Lamp(10);
         lampU.setText("U");
         lampU.setEditable(false);
-        lampV = new RoundJTextField(10);
+        lampV = new Lamp(10);
         lampV.setText("V");
         lampV.setEditable(false);
-        lampW = new RoundJTextField(10);
+        lampW = new Lamp(10);
         lampW.setText("W");
         lampW.setEditable(false);
-        lampX = new RoundJTextField(10);
+        lampX = new Lamp(10);
         lampX.setText("X");
         lampX.setEditable(false);
-        lampY = new RoundJTextField(10);
+        lampY = new Lamp(10);
         lampY.setText("Y");
         lampY.setEditable(false);
-        lampZ = new RoundJTextField(10);
+        lampZ = new Lamp(10);
         lampZ.setText("Z");
         lampZ.setEditable(false);
         // Panel
@@ -309,10 +307,10 @@ public class LampboardPanel extends JPanel {
 }
 
 
-class RoundJTextField extends JTextField {
+class Lamp extends JTextField {
     private Shape shape;
 
-    public RoundJTextField(int size) {
+    public Lamp(int size) {
         super(size);
         setOpaque(false);
         setHorizontalAlignment(CENTER);

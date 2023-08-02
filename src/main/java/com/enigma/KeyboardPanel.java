@@ -6,7 +6,6 @@ import java.awt.*;
 
 
 public class KeyboardPanel extends JPanel {
-    // Keyboard Buttons
     KeyboardJButton buttonA;
     KeyboardJButton buttonB;
     KeyboardJButton buttonC;

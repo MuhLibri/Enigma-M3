@@ -27,6 +27,7 @@ public class GUI extends JFrame implements ActionListener {
     public GUI() {
         // Enigma
         this.enigma = new Enigma();
+        // Plugbuttons
         this.plugButtons = new PlugButtons(this.enigma);
 
 
@@ -36,13 +37,12 @@ public class GUI extends JFrame implements ActionListener {
         Font buttonFont = new Font("Dialog", 1, 15);
 
 
+        // Center Section
         // Rotor Section
         rotorPanel = new RotorPanel(enigma);
 
-
         // Lampboard Section
         lampboardPanel = new LampboardPanel();
-
 
         // Keyboard Section
         keyboardPanel = new KeyboardPanel();
@@ -73,7 +73,6 @@ public class GUI extends JFrame implements ActionListener {
         keyboardPanel.buttonY.addActionListener(this);
         keyboardPanel.buttonZ.addActionListener(this);
 
-
         // Enigma Panel
         JPanel enigmaPanel = new JPanel();
         enigmaPanel.setOpaque(false);
@@ -83,7 +82,6 @@ public class GUI extends JFrame implements ActionListener {
         enigmaPanel.add(lampboardPanel, BorderLayout.CENTER);
         enigmaPanel.add(keyboardPanel, BorderLayout.SOUTH);
 
-
         // Center Panel
         JPanel centerPanel = new JPanel();
         centerPanel.setPreferredSize(new Dimension(900, 800));
@@ -91,6 +89,8 @@ public class GUI extends JFrame implements ActionListener {
         centerPanel.setBackground(new Color(95, 50, 20));
         centerPanel.add(enigmaPanel);
 
+
+        // Right Section
         // Setting Button
         settingButton = new Button("Setting");
         settingButton.setFocusable(false);
@@ -190,7 +190,7 @@ public class GUI extends JFrame implements ActionListener {
         textSection.add(buttonPanel, BorderLayout.SOUTH);
 
 
-        // Steps Text
+        // Steps Section
         // Label
         JLabel stepsLabel = new JLabel("Encryption Steps");
         stepsLabel.setForeground(Color.WHITE);
@@ -225,7 +225,6 @@ public class GUI extends JFrame implements ActionListener {
         rightPanel.add(stepsPanel);
 
 
-
         // Main Panel
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(1400,800));
@@ -236,7 +235,6 @@ public class GUI extends JFrame implements ActionListener {
 
 
         // Frame
-        // Icon
         ImageIcon icon = new ImageIcon("assets/enigma.jpg");
         setIconImage(icon.getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
