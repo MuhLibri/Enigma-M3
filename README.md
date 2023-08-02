@@ -12,6 +12,7 @@ Untuk menjalankan program, dapat mengikuti langkah-langkah berikut:
 1. Buka terminal pada root folder (directory dimana ```pom.xml``` berada).
 2. Ketikkan ```mvn package``` dan tekan enter.
 3. Setelah maven selesai membangun program, ketikkan ```java -jar target/Enigma-M3-1.0.jar``` dan tekan enter.
+
 Setelah itu, akan muncul sebuah GUI seperti berikut:
 
 ![image](https://github.com/MuhLibri/Enigma-M3/assets/104043362/68adeae6-abab-4bda-bc61-25e1537fd014)
@@ -36,7 +37,7 @@ Untuk mengubah plugboard, tekan tombol Plugboard. Akan muncul tampilan pop up se
 
 ![image](https://github.com/MuhLibri/Enigma-M3/assets/104043362/36dd741d-374c-4f8e-8add-120d171c9aa7)
 
-Untuk menghubungkan huruf, tekan huruf yang ingin dihubungkan.
+Untuk menghubungkan huruf, tekan huruf yang ingin dihubungkan. Untuk memutuskan huruf, klik huruf yang ingin diputuskan.
 
 ![image](https://github.com/MuhLibri/Enigma-M3/assets/104043362/9995c5b0-331b-4e46-84b8-5c4dc6ea0aed)
 
