@@ -8,7 +8,63 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlugboardPanel extends JPanel implements ActionListener {
+public class PlugboardPanel extends JPanel {
+    public PlugboardPanel(PlugButtons plugButtons) {
+        // Panel
+        // 1st Row
+        JPanel plugboardPanel1 = new JPanel();
+        plugboardPanel1.setOpaque(false);
+        plugboardPanel1.setPreferredSize(new Dimension(650, 60));
+        plugboardPanel1.setLayout(new GridLayout(1, 9, 10, 10));
+        plugboardPanel1.add(plugButtons.buttonQ);
+        plugboardPanel1.add(plugButtons.buttonW);
+        plugboardPanel1.add(plugButtons.buttonE);
+        plugboardPanel1.add(plugButtons.buttonR);
+        plugboardPanel1.add(plugButtons.buttonT);
+        plugboardPanel1.add(plugButtons.buttonZ);
+        plugboardPanel1.add(plugButtons.buttonU);
+        plugboardPanel1.add(plugButtons.buttonI);
+        plugboardPanel1.add(plugButtons.buttonO);
+        // 2nd Row
+        JPanel plugboardPanel2 = new JPanel();
+        plugboardPanel2.setOpaque(false);
+        plugboardPanel2.setPreferredSize(new Dimension(574, 60));
+        plugboardPanel2.setLayout(new GridLayout(1, 8, 10, 10));
+        plugboardPanel2.add(plugButtons.buttonA);
+        plugboardPanel2.add(plugButtons.buttonS);
+        plugboardPanel2.add(plugButtons.buttonD);
+        plugboardPanel2.add(plugButtons.buttonF);
+        plugboardPanel2.add(plugButtons.buttonG);
+        plugboardPanel2.add(plugButtons.buttonH);
+        plugboardPanel2.add(plugButtons.buttonJ);
+        plugboardPanel2.add(plugButtons.buttonK);
+        // 3rd Row
+        JPanel plugboarddPanel3 = new JPanel();
+        plugboarddPanel3.setOpaque(false);
+        plugboarddPanel3.setPreferredSize(new Dimension(650, 60));
+        plugboarddPanel3.setLayout(new GridLayout(1, 9, 10, 10));
+        plugboarddPanel3.add(plugButtons.buttonP);
+        plugboarddPanel3.add(plugButtons.buttonY);
+        plugboarddPanel3.add(plugButtons.buttonX);
+        plugboarddPanel3.add(plugButtons.buttonC);
+        plugboarddPanel3.add(plugButtons.buttonV);
+        plugboarddPanel3.add(plugButtons.buttonB);
+        plugboarddPanel3.add(plugButtons.buttonN);
+        plugboarddPanel3.add(plugButtons.buttonM);
+        plugboarddPanel3.add(plugButtons.buttonL);
+
+
+        this.setBackground(new Color(31, 31, 33));
+        this.setPreferredSize(new Dimension(800, 350));
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 1000, 30));
+        this.add(plugboardPanel1);
+        this.add(plugboardPanel2);
+        this.add(plugboarddPanel3);
+    }
+}
+
+
+class PlugButtons implements ActionListener {
     Enigma enigma;
     List<PlugButton> addList;
     List<Color> colorList;
@@ -40,11 +96,10 @@ public class PlugboardPanel extends JPanel implements ActionListener {
     PlugButton buttonY;
     PlugButton buttonZ;
 
-
-    public PlugboardPanel(Enigma enigma) {
+    public PlugButtons(Enigma enigma) {
         this.enigma = enigma;
         this.addList = new ArrayList<>();
-        this.colorList = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.MAGENTA, Color.GREEN, Color.ORANGE, Color.CYAN, new Color(95, 50, 20), Color.PINK, new Color(128, 0, 128), new Color(154, 205, 50), new Color(75, 0, 130), new Color(160, 82, 45), new Color(0, 100, 0)));
+        this.colorList = new ArrayList<>(Arrays.asList(Color.RED, Color.BLUE, Color.MAGENTA, Color.GREEN, Color.ORANGE, Color.CYAN, new Color(95, 50, 20), Color.PINK, new Color(128, 0, 128), new Color(154, 205, 50), new Color(75, 0, 130), new Color(160, 82, 45), new Color(0, 100, 0), Color.YELLOW));
         this.currentColor = colorList.get(0);
 
         // Plugs
@@ -100,59 +155,6 @@ public class PlugboardPanel extends JPanel implements ActionListener {
         buttonY.addActionListener(this);
         buttonZ = new PlugButton("Z");
         buttonZ.addActionListener(this);
-
-        // Panel
-        // 1st Row
-        JPanel plugboardPanel1 = new JPanel();
-        plugboardPanel1.setOpaque(false);
-        plugboardPanel1.setPreferredSize(new Dimension(650, 60));
-        plugboardPanel1.setLayout(new GridLayout(1, 9, 10, 10));
-        plugboardPanel1.add(buttonQ);
-        plugboardPanel1.add(buttonW);
-        plugboardPanel1.add(buttonE);
-        plugboardPanel1.add(buttonR);
-        plugboardPanel1.add(buttonT);
-        plugboardPanel1.add(buttonZ);
-        plugboardPanel1.add(buttonU);
-        plugboardPanel1.add(buttonI);
-        plugboardPanel1.add(buttonO);
-        // 2nd Row
-        JPanel plugboardPanel2 = new JPanel();
-        plugboardPanel2.setOpaque(false);
-        plugboardPanel2.setPreferredSize(new Dimension(574, 60));
-        plugboardPanel2.setLayout(new GridLayout(1, 8, 10, 10));
-        plugboardPanel2.add(buttonA);
-        plugboardPanel2.add(buttonS);
-        plugboardPanel2.add(buttonD);
-        plugboardPanel2.add(buttonF);
-        plugboardPanel2.add(buttonG);
-        plugboardPanel2.add(buttonH);
-        plugboardPanel2.add(buttonJ);
-        plugboardPanel2.add(buttonK);
-        // 3rd Row
-        JPanel plugboarddPanel3 = new JPanel();
-        plugboarddPanel3.setOpaque(false);
-        plugboarddPanel3.setPreferredSize(new Dimension(650, 60));
-        plugboarddPanel3.setLayout(new GridLayout(1, 9, 10, 10));
-        plugboarddPanel3.add(buttonP);
-        plugboarddPanel3.add(buttonY);
-        plugboarddPanel3.add(buttonX);
-        plugboarddPanel3.add(buttonC);
-        plugboarddPanel3.add(buttonV);
-        plugboarddPanel3.add(buttonB);
-        plugboarddPanel3.add(buttonN);
-        plugboarddPanel3.add(buttonM);
-        plugboarddPanel3.add(buttonL);
-
-
-        this.setBackground(new Color(31, 31, 33));
-        this.setPreferredSize(new Dimension(800, 350));
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 1000, 30));
-        this.add(plugboardPanel1);
-        this.add(plugboardPanel2);
-        this.add(plugboarddPanel3);
-
-        setUpPlug();
     }
 
     @Override
@@ -237,146 +239,43 @@ public class PlugboardPanel extends JPanel implements ActionListener {
         }
     }
 
-    private void setUpPlug() {
-        for (int i = 0; i < enigma.getPlugboard().getSwitchTuples().size(); i++) {
-            plug(enigma.getPlugboard().getSwitchTuples().get(i).chr1);
-            plug(enigma.getPlugboard().getSwitchTuples().get(i).chr2);
-        }
-    }
-
-    private void plug(char chr) {
-        System.out.println(chr);
-        if (chr == 'A') {
-            recoverPlug(buttonA);
-        }
-        else if (chr == 'B') {
-            recoverPlug(buttonB);
-        }
-        else if (chr == 'C') {
-            recoverPlug(buttonC);
-        }
-
-        else if (chr == 'D') {
-            recoverPlug(buttonD);
-        }
-
-        else if (chr == 'E') {
-            recoverPlug(buttonE);
-        }
-
-        else if (chr == 'F') {
-            recoverPlug(buttonF);
-        }
-
-        else if (chr == 'G') {
-            recoverPlug(buttonG);
-        }
-
-        else if (chr == 'H') {
-            recoverPlug(buttonH);
-        }
-
-        else if (chr == 'I') {
-            recoverPlug(buttonI);
-        }
-
-        else if (chr == 'J') {
-            recoverPlug(buttonJ);
-        }
-
-        else if (chr == 'K') {
-            recoverPlug(buttonK);
-        }
-
-        else if (chr == 'L') {
-            recoverPlug(buttonL);
-        }
-
-        else if (chr == 'M') {
-            recoverPlug(buttonM);
-        }
-
-        else if (chr == 'N') {
-            recoverPlug(buttonN);
-        }
-
-        else if (chr == 'O') {
-            recoverPlug(buttonO);
-        }
-
-        else if (chr == 'P') {
-            recoverPlug(buttonP);
-        }
-
-        else if (chr == 'Q') {
-            recoverPlug(buttonQ);
-        }
-
-        else if (chr == 'R') {
-            recoverPlug(buttonR);
-        }
-
-        else if (chr == 'S') {
-            recoverPlug(buttonS);
-        }
-
-        else if (chr == 'T') {
-            recoverPlug(buttonT);
-        }
-
-        else if (chr == 'U') {
-            recoverPlug(buttonU);
-        }
-
-        else if (chr == 'V') {
-            recoverPlug(buttonV);
-        }
-
-        else if (chr == 'W') {
-            recoverPlug(buttonW);
-        }
-
-        else if (chr == 'X') {
-            recoverPlug(buttonX);
-        }
-
-        else if (chr == 'Y') {
-            recoverPlug(buttonY);
-        }
-
-        else if (chr == 'Z') {
-            recoverPlug(buttonZ);
-        }
-    }
-
-    private void recoverPlug(PlugButton plugButton) {
-        plugButton.setBackground(currentColor);
-        for (int i = 0; i < addList.size(); i++) {
-            if (addList.get(i).getBackground() == plugButton.getBackground()) {
-                colorList.remove(0);
-                currentColor = colorList.get(0);
-            }
-        }
-        addList.add(plugButton);
-    }
-
     private void switchPlug(PlugButton plugButton) {
         char plugButtonChar = plugButton.getButtonName();
-        if (addList.contains(plugButton)) {
-            colorList.add(plugButton.getBackground());
-            plugButton.setBackground(Color.BLACK);
-            enigma.getPlugboard().deletePlugboard(plugButtonChar);
+        int indexPair = -1;
+        Color matchColor;
+
+        if (plugButton.getBackground() == Color.BLACK) {
+            matchColor = currentColor;
         }
         else {
+            matchColor = plugButton.getBackground();
+        }
+
+        for (int i = 0; i < addList.size(); i++) {
+            if (addList.get(i).getBackground() == matchColor && addList.get(i) != plugButton) {
+                indexPair = i;
+                break;
+            }
+        }
+        if (plugButton.getBackground() == Color.BLACK) {
             plugButton.setBackground(currentColor);
-            for (int i = 0; i < addList.size(); i++) {
-                if (addList.get(i).getBackground() == plugButton.getBackground()) {
-                    colorList.remove(0);
-                    currentColor = colorList.get(0);
-                    enigma.getPlugboard().addPlugboard(addList.get(i).getButtonName(), plugButtonChar);
-                }
+            if (indexPair != -1) {
+                colorList.remove(0);
+                currentColor = colorList.get(0);
+                enigma.getPlugboard().addPlugboard(addList.get(indexPair).getButtonName(), plugButtonChar);
             }
             addList.add(plugButton);
+        }
+        else {
+            if (indexPair != -1) {
+                addList.get(indexPair).setBackground(Color.BLACK);
+                addList.remove(indexPair);
+                enigma.getPlugboard().deletePlugboard(plugButtonChar);
+                colorList.add(0, plugButton.getBackground());
+                currentColor = colorList.get(0);
+            }
+            plugButton.setBackground(Color.BLACK);
+            addList.remove(plugButton);
         }
     }
 }

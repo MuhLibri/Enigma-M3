@@ -22,10 +22,12 @@ public class GUI extends JFrame implements ActionListener {
     JTextArea stepsText;
     Button showProcessButton;
     Button clearButton;
+    PlugButtons plugButtons;
 
     public GUI() {
         // Enigma
         this.enigma = new Enigma();
+        this.plugButtons = new PlugButtons(this.enigma);
 
 
         // GUI Variables
@@ -284,7 +286,7 @@ public class GUI extends JFrame implements ActionListener {
             plugboardDialog.setTitle("Plugboard");
             plugboardDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-            PlugboardPanel plugboardPanel = new PlugboardPanel(this.enigma);
+            PlugboardPanel plugboardPanel = new PlugboardPanel(plugButtons);
 
             plugboardDialog.setContentPane(plugboardPanel);
             plugboardDialog.pack();
